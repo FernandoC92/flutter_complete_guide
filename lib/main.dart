@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/answer.dart';
+import 'package:flutter_complete_guide/question.dart';
 
 void main() {
   runApp(
@@ -10,18 +12,18 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionsIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionsIndex = 0;
 
-  void ansWerQuestion() {
+  void _ansWerQuestion() {
     setState(() {
-      questionsIndex++;
+      _questionsIndex++;
     });
-    print(questionsIndex);
+    print(_questionsIndex);
   }
 
   @override
@@ -37,13 +39,10 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: <Widget>[
-            Text(questions[questionsIndex]),
-            RaisedButton(
-              child: Text('Answer 1'),
-              onPressed: ansWerQuestion,
-            ),
-            RaisedButton(child: Text('Answer 2'), onPressed: ansWerQuestion),
-            RaisedButton(child: Text('Answer 3'), onPressed: ansWerQuestion),
+            Question(questions[_questionsIndex]),
+            Answer(_ansWerQuestion),
+            Answer(_ansWerQuestion),
+            Answer(_ansWerQuestion),
           ],
         ),
       ),
@@ -67,3 +66,5 @@ Já a segunda deve estender da classe State<ClasseStateFul> que deve receber com
 
 Setstate é uma função que recebe outra função.
 */
+
+// * _ O underline define que a classe só pode ser usado dentro do aqrquivo aonde a mesma esta sendo declarada (private)
